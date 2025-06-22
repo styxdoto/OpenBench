@@ -1,0 +1,78 @@
+{
+    "private" : false,
+    "nps"     : 1650000,
+    "source"  : "https://github.com/peregrineshahin/Approvers",
+
+    "build" : {
+        "path"      : "src",
+        "compilers" : ["clang", "gcc"],
+        "cpuflags"  : ["POPCNT"],
+        "systems"   : ["Windows", "Linux"]
+    },
+
+    "test_presets" : {
+
+        "default" : {
+            "base_branch"     : "main",
+            "book_name"       : "Kaggle.epd",
+            "test_bounds"     : "[0.00, 3.00]",
+            "test_confidence" : "[0.10, 0.05]",
+            "win_adj"         : "movecount=3 score=450",
+            "draw_adj"        : "movenumber=32 movecount=6 score=15",
+            "both_options"    : "Threads=1 Hash=1",
+            "workload_size"   : 16
+        },
+
+        "STC" : {
+            "both_time_control" : "10.0+0.1"
+        },
+
+        "STC Simplification" : {
+            "both_time_control" : "10.0+0.1",
+            "test_bounds"       : "[-3.00, 0.00]"
+        },
+
+        "STC Progression" : {
+            "both_time_control" : "10.0+0.1",
+            "test_max_games"    : 40000
+        },
+
+        "STC Pondering" : {
+            "both_time_control" : "10.0+0.1",
+            "both_options"      : "Threads=2 Hash=1 Pondering=true"
+        },
+
+        "Fixed Nodes": {
+            "both_time_control" : "N=25000",
+            "workload_size"     : 32
+        }
+    },
+
+    "tune_presets" : {
+
+        "default" : {
+            "book_name" : "Kaggle.epd",
+            "win_adj"   : "movecount=3 score=450",
+            "draw_adj"  : "movenumber=32 movecount=6 score=15"
+        },
+
+        "STC" : {
+            "dev_options"      : "Threads=1 Hash=1",
+            "dev_time_control" : "10.0+0.1"
+        }
+    },
+
+    "datagen_presets" : {
+
+        "default" : {
+            "win_adj"       : "None",
+            "draw_adj"      : "None",
+            "workload_size" : 128
+        },
+
+        "40k Nodes" : {
+            "both_options"      : "Threads=1 Hash=16",
+            "both_time_control" : "N=40000"
+        }
+    }
+}
